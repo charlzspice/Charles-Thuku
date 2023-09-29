@@ -23,7 +23,7 @@
         <div class="home-content">
             <h3>Hello, It's Me</h3>
             <h1>Charles Wanjiku</h1>
-            <h3>And I'm a <span>Software Engineer</span></h3>
+            <h3>And I'm a <span class="element"></span></h3>
             <p>I am a self-motivated software Engineer equiped with skills to come up with solutions to
                 problems arising in the technology world and also designing new ideas .
                 My Expertise in technology fields is due to the interest to know what is trending in the technology world and also working on simple and challenging projects.
@@ -137,5 +137,17 @@
         </div>
      </footer>
      <script src="index.js"></script>
+                <!-- Load library from the CDN -->
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+  <!-- Setup and start animation! -->
+  <script>
+    var typed = new Typed('#element', {
+      strings: ["Front End Developer", "java Developer", "Software Engineer". "Graphics Designer"],
+      typeSpeed: 150,
+                backSpeed:150,
+                loop:true,
+    });
+  </script>
 </body>
 </html>
