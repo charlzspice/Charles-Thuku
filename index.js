@@ -16,4 +16,21 @@ window.onscroll = () =>{
    });
   let header=document.querySelector('header');
    header.classList.toggle('sticky',window.scrollY >100);
-};
+};   
+document.addEventListener("DOMContentLoaded", function() {
+   const sections = document.querySelectorAll("section");
+   
+   sections.forEach(section => {
+       section.addEventListener("click", () => {
+           // Move elements from left to right on section click
+           section.querySelector(".home-content, .services-container, .portfolio-container, .contact").style.transform = "translateX(0)";
+           
+           // Reset other sections
+           sections.forEach(otherSection => {
+               if (otherSection !== section) {
+                   otherSection.querySelector(".home-content, .services-container, .portfolio-container, .contact").style.transform = "translateX(-100%)";
+               }
+           });
+       });
+   });
+});
