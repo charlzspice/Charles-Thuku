@@ -194,7 +194,7 @@ span {
 }
 
 .portfolio-box img {
-    width: 100%;
+    width: 100%; display:flex; height:auto;
     transition: .5s ease;
 }
 
