@@ -79,9 +79,9 @@ section .transition-effect {
 }
 
 .home-img {
-    height: 25vw;
+    height: 30vw;
     display:flex;
-    margin-top: -270px;
+   
     animation: floatImage 4s ease-in-out infinite;
 }
 
