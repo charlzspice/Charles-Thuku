@@ -129,6 +129,7 @@ span {
     letter-spacing: .1rem;
     font-weight: 600;
     transition: .5s;
+    margin-top:30px;
 }
 
 .btn:hover {
