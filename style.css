@@ -80,7 +80,9 @@ section .transition-effect {
 }
 
 .home-img {
-    height: 30vw;
+    width: 100%; /* Ensure it takes up the full width */
+    max-width: 100%;
+    height: auto;
     display: flex;
     animation: floatImage 4s ease-in-out infinite;
 }
@@ -340,22 +342,31 @@ button,
 @media (max-width: 768px) {
     .home {
         flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .home-img {
+        width: 100%; /* Image will take up the full width */
+        max-width: 100%;
+        height: auto; /* Keep the aspect ratio intact */
     }
 
     .navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 1rem 3%;
-        background: var(--bg-color);
-        border-top: 1rem solid rgba(0, 0, 0, .2);
+        display: none; /* Hide the navbar */
     }
 
-    .navbar a {
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
+    .home-content h1 {
+        font-size: 4rem; /* Adjust font size for smaller screens */
+    }
+
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        margin-top: 2rem;
+        padding: 1.2rem 3.5rem; /* Adjust button size for better touch interaction */
     }
 
     .portfolio-container {
