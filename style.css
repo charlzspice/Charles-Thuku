@@ -67,7 +67,7 @@ section {
     color: var(--main-color);
 }
 
-/* Add transition for section content */
+/* Section content transition effect */
 section .transition-effect {
     transition: transform 0.5s ease;
 }
@@ -76,12 +76,12 @@ section .transition-effect {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .home-img {
     height: 30vw;
-    display:flex;
-   
+    display: flex;
     animation: floatImage 4s ease-in-out infinite;
 }
 
@@ -94,11 +94,9 @@ section .transition-effect {
     0% {
         transform: translateY(0);
     }
-
     50% {
         transform: translateY(-2.4rem);
     }
-
     100% {
         transform: translateY(0);
     }
@@ -129,13 +127,14 @@ span {
     letter-spacing: .1rem;
     font-weight: 600;
     transition: .5s;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 .btn:hover {
     box-shadow: none;
 }
 
+/* Service section adjustments */
 .services h2 {
     margin-bottom: 5rem;
 }
@@ -183,7 +182,6 @@ span {
 .portfolio-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-items: center;
     gap: 2.5rem;
 }
 
@@ -196,7 +194,10 @@ span {
 }
 
 .portfolio-box img {
-    width: 100%; display:flex; height:auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
     transition: .5s ease;
 }
 
@@ -236,6 +237,7 @@ span {
     color: green;
 }
 
+/* Contact Section Adjustments */
 .contact h2 {
     margin-bottom: 3rem;
 }
@@ -278,6 +280,7 @@ button,
     cursor: pointer;
 }
 
+/* Footer Styles */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -313,7 +316,7 @@ button,
     font-size: 4.5rem;
 }
 
-/* Breakpoints */
+/* Responsive Breakpoints */
 @media (max-width: 1200px) {
     html {
         font-size: 55%;
@@ -329,24 +332,16 @@ button,
         padding: 10rem 3% 2rem;
     }
 
-    .services {
-        padding-bottom: 7rem;
-    }
-
-    .portfolio {
-        padding-bottom: 7rem;
-    }
-
-    .contact {
-        min-height: auto;
-    }
-
-    .footer {
-        padding: 2rem 3%;
+    .portfolio-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .home {
+        flex-direction: column;
+    }
+
     .navbar {
         position: absolute;
         top: 100%;
@@ -355,7 +350,6 @@ button,
         padding: 1rem 3%;
         background: var(--bg-color);
         border-top: 1rem solid rgba(0, 0, 0, .2);
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
     }
 
     .navbar a {
@@ -364,20 +358,12 @@ button,
         margin: 3rem 0;
     }
 
-    .home {
-        flex-direction: column;
-    }
-
-    .services h2 {
-        margin-bottom: 3rem;
-    }
-
-    .portfolio h2 {
-        margin-bottom: 3rem;
-    }
-
     .portfolio-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer {
+        padding: 2rem 3%;
     }
 }
 
@@ -387,38 +373,6 @@ button,
     }
 }
 
-@media (max-width: 450px) {
-    html {
-        font-size: 50%;
-    }
-
-    .contact form .input-box input {
-        width: 100%;
-    }
-}
-/* Add a max-width for images to ensure they don't overflow their containers */
-.portfolio-box img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: flex;
-    transition: .5s ease;
-}
-
-/* Adjust the layout for smaller screens */
-@media (max-width: 768px) {
-    .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 617px) {
-    .portfolio-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Further adjustments for very small screens */
 @media (max-width: 450px) {
     html {
         font-size: 50%;
@@ -434,21 +388,5 @@ button,
 
     section {
         padding: 10rem 3% 2rem;
-    }
-
-    .services {
-        padding-bottom: 7rem;
-    }
-
-    .portfolio {
-        padding-bottom: 7rem;
-    }
-
-    .contact {
-        min-height: auto;
-    }
-
-    .footer {
-        padding: 2rem 3%;
     }
 }
