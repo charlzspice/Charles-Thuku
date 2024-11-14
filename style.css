@@ -1,5 +1,6 @@
+/* General Styles */
 * {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -45,10 +46,11 @@ section {
 }
 
 .header.sticky {
-    border-bottom: 1rem solid rgba(0, 0, 0, .2);
+    background: var(--second-bg-color);
+    box-shadow: 0 0 1rem var(--bg-color);
 }
 
-.Logo {
+.logo {
     font-size: 2.5rem;
     color: var(--text-color);
     font-weight: 600;
@@ -67,11 +69,7 @@ section {
     color: var(--main-color);
 }
 
-/* Section content transition effect */
-section .transition-effect {
-    transition: transform 0.5s ease;
-}
-
+/* Home Section */
 .home {
     display: flex;
     justify-content: center;
@@ -80,12 +78,13 @@ section .transition-effect {
 }
 
 .home-img {
-    width: 100%; /* Ensure it takes up the full width */
+    width: 100%;
     max-width: 100%;
-    height: auto;
+    height: 50%;
     display: flex;
     animation: floatImage 4s ease-in-out infinite;
 }
+
 
 .home-content h3 {
     font-size: 3.2rem;
@@ -347,17 +346,17 @@ button,
     }
 
     .home-img {
-        width: 100%; /* Image will take up the full width */
+        width: 100%;
         max-width: 100%;
-        height: auto; /* Keep the aspect ratio intact */
+        height: auto;
     }
 
     .navbar {
-        display: none; /* Hide the navbar */
+        display: none;
     }
 
     .home-content h1 {
-        font-size: 4rem; /* Adjust font size for smaller screens */
+        font-size: 4rem;
     }
 
     .home-content h3 {
@@ -366,7 +365,7 @@ button,
 
     .btn {
         margin-top: 2rem;
-        padding: 1.2rem 3.5rem; /* Adjust button size for better touch interaction */
+        padding: 1.2rem 3.5rem;
     }
 
     .portfolio-container {
