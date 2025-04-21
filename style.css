@@ -331,6 +331,7 @@ section {
     transform: scale(1.1);
 }
 
+
 .portfolio-layer {
     position: absolute;
     top: 0;
@@ -363,6 +364,28 @@ section {
     font-weight: 300;
     text-align: center;
 }
+
+/* Project link styling */
+.project-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #0ef;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: #0ef;
+    color: #1f242d;
+    box-shadow: 0 0 10px #0ef;
+}
+
+
 
 /* Contact Section Styles */
 .contact {
