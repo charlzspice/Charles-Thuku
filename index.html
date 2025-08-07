@@ -3,14 +3,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charles Thuku | Portfolio</title>
-    <!-- Add Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Charles Thuku | Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="Charles-removebg-preview.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --terminal-bg: #1e1e1e;
+            --terminal-text: #f0f0f0;
+            --terminal-green: #4AF626;
+            --terminal-blue: #5D8BF4;
+            --terminal-yellow: #F9E64F;
+            --terminal-purple: #D26BF6;
+            --terminal-red: #FF5E5E;
+            --terminal-cursor: #FFFFFF;
+            --terminal-header: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Ubuntu Mono', monospace;
+            background-color: var(--terminal-bg);
+            color: var(--terminal-text);
+            line-height: 1.6;
+        }
+
+        /* Terminal Header */
+        .terminal-header {
+            background-color: var(--terminal-header);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .btn-red { background-color: #FF5F56; }
+        .btn-yellow { background-color: #FFBD2E; }
+        .btn-green { background-color: #27C93F; }
+
+        /* Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background-color: rgba(30, 30, 30, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(74, 246, 38, 0.2);
+        }
+
+        .logo {
+            font-size: 25px;
+            color: var(--terminal-green);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: var(--terminal-text);
+            text-decoration: none;
+            margin-left: 35px;
+            position: relative;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--terminal-green);
+        }
+
+        .navbar a::before {
+            content: '$ ';
+            color: var(--terminal-green);
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .navbar a:hover::before,
+        .navbar a.active::before {
+            opacity: 1;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 10% 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Home Section */
+        .home {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home-content {
+            max-width: 600px;
+        }
+
+        .home-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--terminal-green);
+        }
+
+        .home-content h3:nth-of-type(2) {
+            margin-bottom: 30px;
+        }
+
+        .home-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin: -3px 0;
+            color: var(--terminal-text);
+        }
+
+        .home-content p {
+            font-size: 20px;
+            margin: 20px 0 40px;
+            color: var(--terminal-text);
+        }
+
+        .home-img img {
+            max-width: 450px;
+            border-radius: 50%;
+            border: 5px solid var(--terminal-green);
+            box-shadow: 0 0 20px var(--terminal-green);
+        }
+
+        /* Terminal Prompt Effect */
+        .terminal-prompt {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .prompt-user {
+            color: var(--terminal-green);
+            margin-right: 10px;
+        }
+
+        .prompt-path {
+            color: var(--terminal-blue);
+            margin-right: 10px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: var(--terminal-cursor);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+            height: 48px;
+            background: transparent;
+            border: 2px solid var(--terminal-green);
+            border-radius: 4px;
+            font-size: 18px;
+            color: var(--terminal-green);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s;
+            margin-right: 20px;
+        }
+
+        .btn:hover {
+            color: var(--terminal-bg);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--terminal-green);
+            z-index: -1;
+            transition: width 0.3s;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        /* Services Section */
+        .heading {
+            font-size: 45px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .heading span {
+            color: var(--terminal-green);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-box {
+            background: rgba(51, 51, 51, 0.7);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--terminal-green);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(74, 246, 38, 0.1);
+        }
+
+        .service-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--terminal-green);
+        }
+
+        .service-box p {
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-box {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .portfolio-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), var(--terminal-green));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 40px;
+            transform: translateY(100%);
+            transition: transform 0.5s;
+        }
+
+        .portfolio-box:hover .portfolio-layer {
+            transform: translateY(0);
+        }
+
+        .portfolio-layer h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-layer p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 40px;
+            background: var(--terminal-text);
+            border-radius: 4px;
+            color: var(--terminal-bg);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .project-link:hover {
+            background: var(--terminal-bg);
+            color: var(--terminal-text);
+            border: 1px solid var(--terminal-text);
+        }
+
+        /* Contact Section */
+        .contact form {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .input-box {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-box input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            color: var(--terminal-text);
+            background: rgba(51, 51, 51, 0.7);
+            border: none;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: 'Ubuntu Mono', monospace;
+        }
+
+        .input-box input {
+            width: 49%;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .contact .btn {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .footer-text p {
+            font-size: 16px;
+        }
+
+        .icon-top a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: var(--terminal-green);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--terminal-bg);
+        }
+
+        .icon-top a:hover {
+            background: var(--terminal-text);
+        }
+
+        .icon-top a i {
+            font-size: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .home {
+                padding: 100px 5% 50px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                padding: 20px 5%;
+            }
+
+            section {
+                padding: 100px 5% 50px;
+            }
+
+            .home {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-content {
+                max-width: 100%;
+                margin-bottom: 50px;
+            }
+
+            .home-img img {
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 10px 5%;
+                background: rgba(30, 30, 30, 0.9);
+                display: none;
+                flex-direction: column;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+
+            .navbar a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .input-box input {
+                width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-content h1 {
+                font-size: 40px;
+            }
+
+            .home-content h3 {
+                font-size: 24px;
+            }
+
+            .portfolio-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Terminal Header -->
+    <div class="terminal-header">
+        <div class="terminal-btn btn-red"></div>
+        <div class="terminal-btn btn-yellow"></div>
+        <div class="terminal-btn btn-green"></div>
+    </div>
+
+    <!-- Navigation -->
     <header class="header">
         <a href="#" class="logo">Charles Wanjiku</a>
         <nav class="navbar">
@@ -20,52 +518,81 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
+
     <!-- Home Section -->
     <section class="home" id="home">
         <div class="home-content">
+            <div class="terminal-prompt">
+                <span class="prompt-user">user@CharlesPortfolio</span>
+                <span class="prompt-path">~/home</span>
+                <span class="cursor"></span>
+            </div>
             <h3>Hello, I'm</h3>
             <h1>Charles Wanjiku</h1>
             <h3>I'm a <span id="profession"></span></h3>
             <p id="profession-description">Full-Stack Developer | Java Expert | Data Enthusiast</p>
+            <div class="terminal-prompt">
+                <span class="prompt-user">user@CharlesPortfolio</span>
+                <span class="prompt-path">~/home</span>
+                <span class="cursor"></span>
+            </div>
             <a href="https://drive.google.com/file/d/1jOE5gIO_r6NKBX7ogfLg2pTIJWRr19Vj/view?usp=sharing" class="btn">Download CV</a>
+            <a href="#contact" class="btn">Contact Me</a>
         </div>
         <div class="home-img">
             <img src="Charles-removebg-preview.png" alt="Charles Wanjiku">
         </div>
     </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
+        <div class="terminal-prompt">
+            <span class="prompt-user">user@CharlesPortfolio</span>
+            <span class="prompt-path">~/services</span>
+            <span class="cursor"></span>
+        </div>
         <h2 class="heading">My <span>Services</span></h2>
         <div class="services-container">
             <div class="service-box">
+                <i class="fas fa-code service-icon" style="color: var(--terminal-green); font-size: 40px; margin-bottom: 15px;"></i>
                 <h3>Web Development</h3>
                 <p>I specialize in designing modern, responsive websites using the latest technologies like HTML5, CSS3, and JavaScript frameworks.</p>
                 <a href="#" class="btn">Read More</a>
             </div>
             <div class="service-box">
+                <i class="fab fa-java service-icon" style="color: var(--terminal-green); font-size: 40px; margin-bottom: 15px;"></i>
                 <h3>Java Developer</h3>
                 <p>Experienced in building scalable Java applications, designing user interfaces, and implementing backend services using Java.</p>
                 <a href="#" class="btn">Read More</a>
             </div>
             <div class="service-box">
+                <i class="fas fa-database service-icon" style="color: var(--terminal-green); font-size: 40px; margin-bottom: 15px;"></i>
                 <h3>Database Management</h3>
                 <p>Skilled in managing databases like MySQL, MongoDB, and MariaDB, ensuring efficient data storage and retrieval for businesses.</p>
                 <a href="#" class="btn">Read More</a>
             </div>
             <div class="service-box">
-                <h3>School of Computing and Informatics Maseno University learnig Platform</h3>
-                <p>Designed the pages for the platform</p>
+                <i class="fas fa-laptop-code service-icon" style="color: var(--terminal-green); font-size: 40px; margin-bottom: 15px;"></i>
+                <h3>E-Learning Platform</h3>
+                <p>Designed the pages for Maseno University's School of Computing and Informatics learning platform.</p>
                 <a href="https://github.com/charlzspice/learn_io_frontend" class="btn">Read More</a>
             </div>
             <div class="service-box">
+                <i class="fas fa-chart-line service-icon" style="color: var(--terminal-green); font-size: 40px; margin-bottom: 15px;"></i>
                 <h3>Data Analysis & Mining</h3>
                 <p>Proficient in data analysis and mining techniques to help organizations make data-driven decisions using modern tools.</p>
                 <a href="#" class="btn">Read More</a>
             </div>
         </div>
     </section>
+
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
+        <div class="terminal-prompt">
+            <span class="prompt-user">user@CharlesPortfolio</span>
+            <span class="prompt-path">~/portfolio</span>
+            <span class="cursor"></span>
+        </div>
         <h2 class="heading">Latest <span>Projects</span></h2>
         <div class="portfolio-container">
             <div class="portfolio-box">
@@ -85,14 +612,13 @@
                 </div>
             </div>
             <div class="portfolio-box">
-                <img src="pexels-pixabay-235842.jpg" alt="Learning Platfrom ">
+                <img src="pexels-pixabay-235842.jpg" alt="Learning Platform">
                 <div class="portfolio-layer">
-                    <h4>Learning platfrom</h4>
-                    <p>Creative designs made with tools like Figma and Adobe. <br> Technologies:React js</p>
+                    <h4>Learning Platform</h4>
+                    <p>Creative designs made with tools like Figma and Adobe. <br> Technologies: React js</p>
                     <a href="https://github.com/charlzspice/learn_io_frontend" class="project-link">View Portfolio</a>
                 </div>
             </div>
-            <!-- New Project 1 -->
             <div class="portfolio-box">
                 <img src="University.png" alt="Data Anonymization Tool">
                 <div class="portfolio-layer">
@@ -101,19 +627,24 @@
                     <a href="https://github.com/charlzspice/Anonimyzer" class="project-link">View Project</a>
                 </div>
             </div>
-            <!-- New Project 2 -->
             <div class="portfolio-box">
-                <img src="Elimisha.png" alt="Learning Platfrom and AI marking Functionality">
+                <img src="Elimisha.png" alt="Learning Platform and AI marking Functionality">
                 <div class="portfolio-layer">
-                    <h4>Learning Platfrom </h4>
-                    <p>Ar <br> Technologies: React js, Firebase </p>
+                    <h4>Learning Platform</h4>
+                    <p>AI-powered learning platform with automated grading functionality. <br> Technologies: React js, Firebase</p>
                     <a href="https://elimisha-xann.onrender.com/landing" class="project-link">Live Demo</a>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
+        <div class="terminal-prompt">
+            <span class="prompt-user">user@CharlesPortfolio</span>
+            <span class="prompt-path">~/contact</span>
+            <span class="cursor"></span>
+        </div>
         <h2 class="heading">Contact <span>Me!</span></h2>
         <form action="https://formsubmit.co/cf1e0e23f15ca3e86e1ef80fa7ec412d" method="POST">
             <div class="input-box">
@@ -128,15 +659,97 @@
             <input type="submit" value="Send Message" class="btn">
         </form>
     </section>
+
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-text">
             <p>&copy; 2023 CharlesTechSystems | All Rights Reserved.</p>
         </div>
         <div class="icon-top">
-            <a href="#home">Back to Top</a>
+            <a href="#home"><i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
-    <script src="index.js"></script>
+
+    <script>
+        // Typing Effect
+        const professions = [
+            "Full-Stack Developer",
+            "Java Expert",
+            "Data Scientist",
+            "UI/UX Designer",
+            "Database Administrator"
+        ];
+        
+        const descriptions = [
+            "Building robust web applications with modern technologies.",
+            "Creating efficient Java solutions for complex problems.",
+            "Transforming data into actionable insights.",
+            "Designing intuitive and beautiful user interfaces.",
+            "Managing and optimizing database systems."
+        ];
+        
+        const professionElement = document.getElementById('profession');
+        const descriptionElement = document.getElementById('profession-description');
+        let professionIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        
+        function typeEffect() {
+            const currentProfession = professions[professionIndex];
+            const currentDescription = descriptions[professionIndex];
+            
+            if (isDeleting) {
+                professionElement.textContent = currentProfession.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                professionElement.textContent = currentProfession.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentProfession.length) {
+                isEnd = true;
+                descriptionElement.textContent = currentDescription;
+                isDeleting = true;
+                setTimeout(typeEffect, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                professionIndex++;
+                if (professionIndex >= professions.length) professionIndex = 0;
+                setTimeout(typeEffect, 500);
+            } else {
+                const typingSpeed = isDeleting ? 100 : 200;
+                setTimeout(typeEffect, typingSpeed);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeEffect, 1000);
+            
+            // Highlight active section in navbar
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 300) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
