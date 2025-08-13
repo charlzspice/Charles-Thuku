@@ -203,6 +203,65 @@
             border-left: 3px solid var(--terminal-green);
         }
 
+        /* Interactive Terminal */
+        .interactive-terminal {
+            margin: 40px 0;
+            background-color: var(--terminal-input-bg);
+            border-radius: 8px;
+            border: 1px solid rgba(74, 246, 38, 0.3);
+            overflow: hidden;
+        }
+
+        .terminal-history {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .terminal-history-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .history-command {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .history-output {
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .terminal-input-container {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: rgba(26, 30, 36, 0.7);
+            border-top: 1px solid rgba(74, 246, 38, 0.2);
+        }
+
+        .terminal-input-prompt {
+            color: var(--terminal-green);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: var(--terminal-text);
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
         /* Home Section */
         .home {
             display: flex;
@@ -797,6 +856,45 @@
                 </div>
             </section>
 
+            <!-- Interactive Terminal Section -->
+            <section class="section" id="terminal">
+                <div class="terminal-prompt">
+                    <span class="prompt-user">visitor@portfolio</span>
+                    <span class="prompt-path">~/terminal</span>
+                    <span class="prompt-symbol">$</span>
+                    <span class="cursor"></span>
+                </div>
+                
+                <h2 class="heading">Interactive <span>Terminal</span></h2>
+                <p>Try typing commands below to learn more about me. Type 'help' for available commands.</p>
+                
+                <div class="interactive-terminal">
+                    <div class="terminal-history" id="terminalHistory">
+                        <div class="terminal-history-content" id="terminalContent">
+                            <div class="history-command">
+                                <span class="prompt-user">visitor@portfolio</span>
+                                <span class="prompt-path">~</span>
+                                <span class="prompt-symbol">$</span>
+                                <span>help</span>
+                            </div>
+                            <div class="history-output">
+                                Available commands:
+                                > about - Show information about me
+                                > skills - Display my technical skills
+                                > projects - List my portfolio projects
+                                > contact - Show contact information
+                                > resume - View my resume
+                                > clear - Clear the terminal
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terminal-input-container">
+                        <span class="terminal-input-prompt">visitor@portfolio:~$</span>
+                        <input type="text" class="terminal-input" id="terminalInput" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </section>
+
             <!-- About Section -->
             <section class="section" id="about">
                 <div class="terminal-prompt">
@@ -813,14 +911,20 @@
                     <p>Charles Wanjiku v3.0.0</p>
                     <br>
                     <p>> Charles Wanjiku --description</p>
-                    <p>Frontend Developer with expertise in React.js, JavaScript, and modern web technologies. Passionate about creating intuitive user interfaces and seamless user experiences. Strong problem-solving skills and attention to detail.</p>
+                    <p>Innovative and results-oriented Software Engineer with a strong foundation in full-stack
+development, API integration, and system optimization. Experienced in designing and
+deploying scalable, secure, and high-performance software solutions. Passionate about
+solving real-world problems through clean architecture, automation, and continuous
+improvement. Seeking to contribute technical expertise and creativity to organizations that
+value impactful software delivery, cross-functional collaboration, and user-centered design.
+</p>
                     <br>
                     <p>> Charles Wanjiku --education</p>
-                    <p>Bachelor of Science in Computer Science - Maseno University (2020-2024)</p>
+                    <p>Bachelor of Science in Computer Science - Maseno University (2021-2025)</p>
                     <br>
                     <p>> Charles Wanjiku --experience</p>
-                    <p>Frontend Developer - Freelance (2022-Present)</p>
-                    <p>Web Development Intern - Tech Solutions Ltd (2021)</p>
+                    <p>Software Engineer - Siren Chemicals Limited (2025-Present)</p>
+                    <p>Web Development Intern - University of Nairobi (2024)</p>
                 </div>
             </section>
 
@@ -854,6 +958,8 @@
                             <li>Node.js</li>
                             <li>Express</li>
                             <li>Java</li>
+                             <li>Spring Boot </li>
+                             <li>fast API</li>
                             <li>Python</li>
                             <li>RESTful APIs</li>
                         </ul>
@@ -1035,16 +1141,14 @@
                 </form>
                 
                 <div class="social-links">
-                    <a href="#" class="social-link" title="GitHub">
+                    <a href="https://github.com/charlzspice" class="social-link" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="social-link" title="LinkedIn">
+                    <a href="www.linkedin.com/in/charles-wanjiku-b92369282" class="social-link" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" class="social-link" title="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-link" title="Email">
+                   
+                    <a href="mailto:charlestwanjiku@gmail.com" class="social-link" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -1066,7 +1170,8 @@
             "UI/UX Designer",
             "JavaScript Expert",
             "Frontend Engineer",
-            "Web Developer"
+            "Web Developer",
+            "Backend Engineer"
         ];
         
         const descriptions = [
@@ -1074,7 +1179,8 @@
             "Creating beautiful, intuitive designs that enhance user experience.",
             "Writing clean, efficient JavaScript code for optimal performance.",
             "Developing scalable frontend architectures for complex applications.",
-            "Crafting responsive websites with attention to detail and performance."
+            "Crafting responsive websites with attention to detail and performance.",
+            "Architect of scalable, secure, and high-performance server-side systems."
         ];
         
         const professionElement = document.getElementById('profession');
@@ -1113,6 +1219,123 @@
                 setTimeout(typeEffect, typingSpeed);
             }
         }
+        
+        // Interactive Terminal Functionality
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalContent = document.getElementById('terminalContent');
+        const terminalHistory = document.getElementById('terminalHistory');
+        
+        const commands = {
+            help: {
+                output: `Available commands:
+> about - Show information about me
+> skills - Display my technical skills
+> projects - List my portfolio projects
+> contact - Show contact information
+> resume - View my resume
+> clear - Clear the terminal`
+            },
+            about: {
+                output: `Charles Wanjiku - Full Stack Developer
+
+> --description
+Innovative and results-oriented Software Engineer with expertise in both frontend and backend development. 
+Passionate about creating efficient, scalable, and user-friendly applications.
+
+> --education
+Bachelor of Science in Computer Science - Maseno University (2021-2025)
+
+> --experience
+Software Engineer - Siren Chemicals Limited (2025-Present)
+Web Development Intern - University of Nairobi (2024)`
+            },
+            skills: {
+                output: `Technical Skills:
+
+Frontend: React.js, JavaScript (ES6+), HTML5, CSS3, TypeScript, Redux, Tailwind CSS
+Backend: Node.js, Express, Java, Spring Boot, FastAPI, Python, RESTful APIs
+Tools: Git, GitHub, Docker, Figma, Webpack, Jest
+Methodologies: Agile, Scrum, CI/CD`
+            },
+            projects: {
+                output: `Featured Projects:
+
+1. School Management System (Java, Swing, MySQL)
+   - Comprehensive system for managing school operations
+
+2. Farming Website (HTML5, CSS3, JavaScript)
+   - Agricultural platform connecting farmers with resources
+
+3. E-Learning Platform (React, Firebase, Tailwind)
+   - Modern LMS with course management and quizzes
+
+4. Data Anonymization Tool (Python, Streamlit, ARX)
+   - Privacy-preserving platform for educational data`
+            },
+            contact: {
+                output: `Contact Information:
+
+Email: charlestwanjiku@gmail.com
+GitHub: github.com/charlzspice
+LinkedIn: linkedin.com/in/charles-wanjiku-b92369282
+Phone: +254 798863351`
+            },
+            resume: {
+                output: `Resume:
+You can view and download my resume at:
+https://drive.google.com/file/d/1jOE5gIO_r6NKBX7ogfLg2pTIJWRr19Vj/view?usp=sharing`,
+                action: () => {
+                    window.open('https://drive.google.com/file/d/1jOE5gIO_r6NKBX7ogfLg2pTIJWRr19Vj/view?usp=sharing', '_blank');
+                }
+            },
+            clear: {
+                output: '',
+                action: () => {
+                    terminalContent.innerHTML = '';
+                }
+            }
+        };
+        
+        function processCommand(command) {
+            // Create command display
+            const commandElement = document.createElement('div');
+            commandElement.className = 'history-command';
+            commandElement.innerHTML = `
+                <span class="prompt-user">visitor@portfolio</span>
+                <span class="prompt-path">~</span>
+                <span class="prompt-symbol">$</span>
+                <span>${command}</span>
+            `;
+            terminalContent.appendChild(commandElement);
+            
+            // Process command
+            const cmd = command.toLowerCase().trim();
+            let response = commands[cmd] || {
+                output: `Command not found: ${command}\nType 'help' for available commands.`
+            };
+            
+            // Create output display
+            const outputElement = document.createElement('div');
+            outputElement.className = 'history-output';
+            outputElement.textContent = response.output;
+            terminalContent.appendChild(outputElement);
+            
+            // Execute any associated action
+            if (response.action) {
+                response.action();
+            }
+            
+            // Scroll to bottom
+            terminalHistory.scrollTop = terminalHistory.scrollHeight;
+        }
+        
+        terminalInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value;
+                terminalInput.value = '';
+                processCommand(command);
+            }
+        });
         
         // Initialize typing effect
         document.addEventListener('DOMContentLoaded', () => {
@@ -1161,89 +1384,6 @@
                 observer.observe(element);
             });
             
-            // Terminal command simulation
-            const commandInput = document.querySelector('.command-line');
-            const terminalOutput = document.querySelector('.terminal-output');
-            
-            if (commandInput) {
-                commandInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        const command = commandInput.value.trim();
-                        commandInput.value = '';
-                        
-                        // Create new prompt line
-                        const promptLine = document.createElement('div');
-                        promptLine.className = 'terminal-prompt';
-                        promptLine.innerHTML = `
-                            <span class="prompt-user">visitor@portfolio</span>
-                            <span class="prompt-path">~</span>
-                            <span class="prompt-symbol">$</span>
-                            <span>${command}</span>
-                        `;
-                        
-                        // Create output based on command
-                        const output = document.createElement('div');
-                        output.className = 'terminal-output';
-                        
-                        if (command === 'help') {
-                            output.innerHTML = `
-                                <p>Available commands:</p>
-                                <p>> about - Show information about me</p>
-                                <p>> skills - Display my technical skills</p>
-                                <p>> projects - List my portfolio projects</p>
-                                <p>> contact - Show contact information</p>
-                                <p>> clear - Clear the terminal</p>
-                            `;
-                        } else if (command === 'about') {
-                            output.innerHTML = `
-                                <p>> Charles Wanjiku --description</p>
-                                <p>Frontend Developer with expertise in React.js, JavaScript, and modern web technologies.</p>
-                                <p>Passionate about creating intuitive user interfaces and seamless user experiences.</p>
-                            `;
-                        } else if (command === 'skills') {
-                            output.innerHTML = `
-                                <p>Frontend: React, JavaScript, HTML5, CSS3, TypeScript</p>
-                                <p>Backend: Node.js, Express, Java, Python</p>
-                                <p>Tools: Git, Docker, Figma, Webpack</p>
-                            `;
-                        } else if (command === 'projects') {
-                            output.innerHTML = `
-                                <p>1. School Management System (Java, Swing)</p>
-                                <p>2. Farming Website (HTML, CSS, JavaScript)</p>
-                                <p>3. E-Learning Platform (React, Firebase)</p>
-                                <p>4. Data Anonymization Tool (Python, Streamlit)</p>
-                            `;
-                        } else if (command === 'contact') {
-                            output.innerHTML = `
-                                <p>Email: charles@example.com</p>
-                                <p>GitHub: github.com/charleswanjiku</p>
-                                <p>LinkedIn: linkedin.com/in/charleswanjiku</p>
-                            `;
-                        } else if (command === 'clear') {
-                            // Clear will be handled by removing elements
-                        } else {
-                            output.innerHTML = `<p>Command not found: ${command}. Type 'help' for available commands.</p>`;
-                        }
-                        
-                        // Insert new elements
-                        if (command !== 'clear') {
-                            terminalOutput.parentNode.insertBefore(promptLine, terminalOutput);
-                            terminalOutput.parentNode.insertBefore(output, terminalOutput);
-                        } else {
-                            // Clear all previous outputs
-                            const outputs = document.querySelectorAll('.terminal-output, .terminal-prompt');
-                            outputs.forEach((el, index) => {
-                                if (index < outputs.length - 1) el.remove();
-                            });
-                        }
-                        
-                        // Scroll to bottom
-                        window.scrollTo(0, document.body.scrollHeight);
-                    }
-                });
-            }
-            
             // Make terminal buttons interactive
             const terminalBtns = document.querySelectorAll('.terminal-btn');
             terminalBtns.forEach(btn => {
@@ -1270,6 +1410,11 @@
                         }, 300);
                     }
                 });
+            });
+            
+            // Focus on terminal input when terminal section is clicked
+            document.getElementById('terminal').addEventListener('click', () => {
+                terminalInput.focus();
             });
         });
     </script>
